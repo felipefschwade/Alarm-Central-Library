@@ -14,12 +14,18 @@
 		public:
 			AlarmCentral(RCSwitch mySwitch);
 			void setPIRSensors(int *sensors);
-			void AlarmCentral::setLedPins(int greenLed, int redLed);
+			void setLedPins(int greenLed, int redLed);
+			void AlarmCentral::setSirenPin
 		private:
 			RCSwitch _mySwitch;
 			int _PIRSensors;
 			int _greenLed;
 			int _redLed;
+			int _sirenPin;
+			void AlarmCentral::ledBlink(int _led, int _speed_milis);
+			void AlarmCentral::turnOn(int _pin);
+			void AlarmCentral::turnOff(int _pin);
+			void AlarmCentral::sirenBeep(int _times);
 
 	};
 

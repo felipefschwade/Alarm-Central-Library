@@ -28,6 +28,7 @@ AlarmCentral::AlarmCentral(RCSwitch mySwitch) {
 void AlarmCentral::setPIRSensors(int *sensors) {
 	_PIRSensors = sensors;
 }
+
 /**
 	Set the 2 pins for the Output leds;
 */
@@ -35,3 +36,18 @@ void AlarmCentral::setLedPins(int greenLed, int redLed) {
 	_greenLed = greenLed;
 	_redLed = redLed;
 }
+
+/**
+	Set the Siren Pin output
+*/
+void AlarmCentral::setSirenPin(int sirenPin) {
+	_sirenPin = sirenPin;
+}
+
+/**
+	<----------------------------------- Private Functions ------------------------------------->
+*/
+void AlarmCentral::ledBlink(int led, int speed_milis);
+void AlarmCentral::turnOn(int pin);
+void AlarmCentral::turnOff(int pin);
+void AlarmCentral::sirenBeep(int times);
