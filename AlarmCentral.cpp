@@ -17,6 +17,8 @@ AlarmCentral::AlarmCentral(RCSwitch mySwitch) {
 	_mySwitch = mySwitch;
 	//Enable Receive on interrupt 0, by default it is on Pin2
 	_mySwitch.enableReceive(0);
+	//The timer to use on Blinks.
+	_previousMillis = 0;
 }
 
 /**
