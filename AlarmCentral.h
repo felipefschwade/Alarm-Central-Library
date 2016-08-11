@@ -13,9 +13,14 @@
 	class AlarmCentral {
 		public:
 			AlarmCentral(RCSwitch mySwitch);
-			void functioname();
+			void setPIRSensors(int *sensors);
+			void AlarmCentral::setLedPins(int greenLed, int redLed);
 		private:
 			RCSwitch _mySwitch;
+			int _PIRSensors;
+			int _greenLed;
+			int _redLed;
+
 	};
 
 #endif

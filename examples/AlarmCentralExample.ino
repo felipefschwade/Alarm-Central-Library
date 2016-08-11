@@ -1,18 +1,20 @@
 //Adding the external libraries that are needed:
 /*
  * SD.h and SPI.h for the SDcard
- * SD card attached to SPI bus as follows:
+ * SD card attached to SPI bus in an Arduino UNO R3 as follows:
  ** MOSI - pin 11
  ** MISO - pin 12
  ** CLK - pin 13
  ** CS - pin 4
  * RCSwitch..h for the RF433Mhz Receptor
+ ** RFReceiver is by default definited on pin 2
  * AlarmCentral.h for all the alarm control and actions
 */
 #include <SD.h>
 #include <SPI.h>
 #include <RCSwitch.h>
 #include <AlarmCentraL.h>
+
 //Defining the RF433Mhz object
 RCSwitch mySwitch = RCSwitch();
 
@@ -79,7 +81,6 @@ void setup() {
   Serial.begin(9600);
   Serial.println("INICIADO!");
   initiatePins();
-  mySwitch.enableReceive(0);
   //If the card isn't located the software will get into sleep mode.
   if (!SD.begin(SDCARD)) {
     SDReadFailed();
