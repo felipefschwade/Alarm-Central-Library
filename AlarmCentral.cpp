@@ -11,7 +11,8 @@
 
 /**
 *	Class Consctructor
+*	Receive the RCSwitch Object as a Parameter	
 */
-AlarmCentral::AlarmCentral() {
-	
+AlarmCentral::AlarmCentral(RCSwitch mySwitch) {
+	_mySwitch = mySwitch;
 }

@@ -12,10 +12,10 @@
 	#include "Arduino.h"
 	class AlarmCentral {
 		public:
-			functioname(int params);
+			AlarmCentral(RCSwitch mySwitch);
 			void functioname();
 		private:
-			type _varname;
+			RCSwitch _mySwitch;
 	};
 
 #endif

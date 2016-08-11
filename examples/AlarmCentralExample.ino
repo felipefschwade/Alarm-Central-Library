@@ -13,9 +13,8 @@
 #include <SPI.h>
 #include <RCSwitch.h>
 #include <AlarmCentraL.h>
-/*
-  @TODO a personal .h file for the library
-*/
+//Defining the RF433Mhz object
+RCSwitch mySwitch = RCSwitch();
 
 //Defining the functions used
 void initiatePins();
@@ -75,8 +74,6 @@ File myFile;
 //Here you put the quantity of controls that you want in you 
 long int controls[];
 
-//Defining the RF433Mhz decoder library
-RCSwitch mySwitch = RCSwitch();
 
 void setup() {
   Serial.begin(9600);
