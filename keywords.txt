@@ -1,2 +1,8 @@
 AlarmCentral 		KEYWORD1
 functioName 		KEYWORD2
+setPIRSensors		KEYWORD3
+setLedPins			KEYWORD4
+ledBlink			KEYWORD5
+turnOn				KEYWORD6
+turnOff				KEYWORD7
+sirenBeep			KEYWORD8
