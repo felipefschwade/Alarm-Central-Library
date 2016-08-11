@@ -47,7 +47,30 @@ void AlarmCentral::setSirenPin(int sirenPin) {
 /**
 	<----------------------------------- Private Functions ------------------------------------->
 */
-void AlarmCentral::ledBlink(int led, int speed_milis);
-void AlarmCentral::turnOn(int pin);
-void AlarmCentral::turnOff(int pin);
-void AlarmCentral::sirenBeep(int times);
+/**
+	Make a led blink after a Ms definited time
+*/
+void AlarmCentral::ledBlink(int led, int speed_milis) {
+
+}
+/**
+	Put a pin on HIGH logic state
+*/
+void AlarmCentral::turnOn(int pin) {
+	digitalWrite(pin, HIGH);
+}
+/**
+	Put a pin on LOW logic state
+*/
+void AlarmCentral::turnOff(int pin) {
+	digitalWrite(pin, LOW);
+}
+/**
+	For the Siren used in Production, a 300ms delay
+	is the time for a exactly one Beep, and the delay is used to
+	lock up the processor and avoid any accidental UI
+*/
+void AlarmCentral::sirenBeep(int times) {
+	turnOn(_sirenPin);
+	delay(times * 300);
+	turnOff(_sirenPin);  

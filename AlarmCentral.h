@@ -22,7 +22,7 @@
 			int _greenLed;
 			int _redLed;
 			int _sirenPin;
-			void AlarmCentral::ledBlink(int _led, int _speed_milis);
+			void AlarmCentral::ledBlink(int _led, int s_peed_milis);
 			void AlarmCentral::turnOn(int _pin);
 			void AlarmCentral::turnOff(int _pin);
 			void AlarmCentral::sirenBeep(int _times);

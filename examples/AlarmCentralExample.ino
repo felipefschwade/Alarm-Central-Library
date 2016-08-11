@@ -170,20 +170,6 @@ void ledBlink(int led, int speed_milis) {
     }
 }
 
-void turnOn(int pin) {
-  digitalWrite(pin, HIGH);
-}
-
-void turnOff(int pin) {
-  digitalWrite(pin, LOW);
-}
-
-void sirenBeep(int times) {
-      turnOn(SIREN);
-      delay(times * 300);
-      turnOff(SIREN);  
-}
-
 void setAlarmOn() {
     turnOff(GREEN_LED);
     Serial.println("Alarm On");
