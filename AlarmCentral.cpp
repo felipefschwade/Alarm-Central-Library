@@ -45,7 +45,14 @@ void AlarmCentral::setLedPins(int greenLed, int redLed) {
 void AlarmCentral::setSirenPin(int sirenPin) {
 	_sirenPin = sirenPin;
 }
-
+/**
+	Define the pinMode of all pins that were defined by the user
+*/
+void AlarmCentral::begin() {
+		for (int i = 0; i < sizeof(sensors); ++i) {
+		pinMode(sensors[i], INPUT);
+	}
+}
 /**
 	<----------------------------------- Private Functions ------------------------------------->
 */

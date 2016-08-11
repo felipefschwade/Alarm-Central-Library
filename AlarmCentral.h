@@ -16,7 +16,8 @@
 			AlarmCentral(RCSwitch mySwitch);
 			void setPIRSensors(int *sensors);
 			void setLedPins(int greenLed, int redLed);
-			void AlarmCentral::setSirenPin
+			void AlarmCentral::setSirenPin(int sirenPin);
+			void AlarmCentral::begin();
 		private:
 			RCSwitch _mySwitch;
 			int _PIRSensors;

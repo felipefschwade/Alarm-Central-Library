@@ -6,3 +6,4 @@ ledBlink			KEYWORD5
 turnOn				KEYWORD6
 turnOff				KEYWORD7
 sirenBeep			KEYWORD8
+begin				KEYWORD9
