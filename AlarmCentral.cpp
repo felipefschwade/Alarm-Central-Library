@@ -46,10 +46,10 @@ void AlarmCentral::setSirenPin(int sirenPin) {
 	_sirenPin = sirenPin;
 }
 /**
-	Define the pinMode of all pins that were defined by the user
+	Create all the structure needed to make the AlarmCentral works
 */
 void AlarmCentral::begin() {
-		for (int i = 0; i < sizeof(sensors); ++i) {
+	for (int i = 0; i < sizeof(sensors); ++i) {
 		pinMode(sensors[i], INPUT);
 	}
 }
