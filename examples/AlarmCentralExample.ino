@@ -18,23 +18,6 @@
 //Defining the RF433Mhz object
 RCSwitch mySwitch = RCSwitch();
 
-//Defining the functions used
-void initiatePins();
-int receivedSignal();
-void setAlarmOff();
-void ledBlink(int led, int speed_milis);
-void turnOn(int pin);
-void turnOff(int pin);
-void sirenBeep(int times);
-void setAlarmOn();
-void setNewControllAddingState();
-void setAlarmOff();
-void startAlarm();
-void SDOpenFileFailed();
-void SDReadFailed();
-void loadData();
-void addNewControl();
-
 //Pins that will be used in the example
 #define SENSOR_PIR1 14 // Analog 0
 #define SDCARD 4
@@ -45,28 +28,7 @@ void addNewControl();
 
 //Defining all global scope variables
 //The state control variable
-int state;
-//The possible status enum
-enum _Status {
-    ALARM_OFF,
-    ALARM_ON,
-    ALARM_STARTED,
-    NEW_CONTROL_ADDING
-  };
-  
-//All the possible received signals
-enum _receivedSignal {
-    CONTROL_SIGNAL,
-    SENSOR_SIGNAL,
-    NEW_CONTROL_BUTTON_PRESSED
-  };
 
-//Define the file containing all control codes
-File _myFile;
-
-//TODO Auto control codes generation
-//Here you put the quantity of controls that you want in you 
-long int controls*;
 
 
 void setup() {
@@ -125,32 +87,7 @@ void initiatePins() {
     pinMode(RED_LED, OUTPUT);
     pinMode(GREEN_LED, OUTPUT);
 }
-//Return the signal to the controller
-int receivedSignal() {
-       if (mySwitch.available()) {
-              Serial.println(mySwitch.getReceivedValue());
-              Serial.println();
-              for (int i=0; i < 21; i++) {
-                  Serial.println(i);
-                  Serial.println(controls[i]);
-                  if (controls[i] != NULL && controls[i] == mySwitch.getReceivedValue()) {
-                    Serial.println("Control Signal");
-                    mySwitch.resetAvailable();
-                    //Delay to slow down the RFsignal reading
-                    delay(500);
-                    return CONTROL_SIGNAL; 
-                  }
-              }
-              mySwitch.resetAvailable();
-          }
-        if (digitalRead(NEW_CONTROL_BUTTON) == 0) {
-            return NEW_CONTROL_BUTTON_PRESSED;
-        }
-       if (digitalRead(SENSOR_PIR1) == 0) {
-             return SENSOR_SIGNAL; 
-        }
-      return INDEFINIDO;
-}
+/
 
 void setAlarmOn() {
     turnOff(GREEN_LED);

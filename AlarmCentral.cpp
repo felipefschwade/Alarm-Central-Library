@@ -49,6 +49,38 @@ void AlarmCentral::setSirenPin(int sirenPin) {
 /**
 	<----------------------------------- Private Functions ------------------------------------->
 */
+
+/**
+	Searche for any king of signal and return it,
+	if no one signal defineted on _receivedSignals var
+	it retunrs a UNDEFINED
+*/
+int AlarmCentral::getReceivedSignal() {
+       if (_mySwitch.available()) {
+              Serial.println(_mySwitch.getReceivedValue()); // Debug Only
+              Serial.println(); // Debug Only
+              for (int i=0; i < 21; i++) {
+                  Serial.println(i); //Debug only
+                  Serial.println(_controls[i]); //Debug only
+                  if (_controls[i] != NULL && _controls[i] == _mySwitch.getReceivedValue()) {
+                    Serial.println("Control Signal");
+                    _mySwitch.resetAvailable();
+                    //Delay to slow down the RFsignal reading
+                    delay(500);
+                    return CONTROL_SIGNAL; 
+                  }
+              }
+              _mySwitch.resetAvailable();
+          }
+        if (digitalRead(NEW_CONTROL_BUTTON) == 0) {
+            return NEW_CONTROL_BUTTON_PRESSED;
+        }
+       if (digitalRead(SENSOR_PIR1) == 0) {
+             return SENSOR_SIGNAL; 
+        }
+      return UNDEFINED;
+}
+
 /**
 	Make a led blink after a Ms definited time
 */
