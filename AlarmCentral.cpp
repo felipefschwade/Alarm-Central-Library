@@ -52,6 +52,9 @@ void AlarmCentral::begin() {
 	for (int i = 0; i < sizeof(sensors); ++i) {
 		pinMode(sensors[i], INPUT);
 	}
+	pinMode(_greenLed, OUTPUT);
+	pinMode(_redLed, OUTPUT);
+	pinMode(_sirenPin, OUTPUT);
 }
 /**
 	<----------------------------------- Private Functions ------------------------------------->
@@ -123,3 +126,25 @@ void AlarmCentral::sirenBeep(int times) {
 	turnOn(_sirenPin);
 	delay(times * 300);
 	turnOff(_sirenPin);  
+}
+/**
+	Make the code get locked and light up a LED
+	to indicate the user some problem with the SD
+	Card file reading
+*/
+void AlarmCentral::SDOpenFileFailed() {
+  // if the file didn't open, print an error and stay:
+    Serial.println("Error opening codes.txt, please review your SD Card");
+    turnOn(GREEN_LED);
+    delay(999999999999999);
+}
+/**
+	Make the code get locked and light up a LED
+	to indicate the user some problem with the SD
+	Card reading
+*/
+void AlarmCentral::SDReadFailed() {
+    Serial.println("Initialization Failed! Please verify your SD Card and try Again");
+    digitalWrite(RED_LED, HIGH);
+    delay(9999999999999999);
+}

@@ -7,3 +7,5 @@ turnOn				KEYWORD6
 turnOff				KEYWORD7
 sirenBeep			KEYWORD8
 begin				KEYWORD9
+SDOpenFileFailed	KEYWORD10
+SDReadFailed 		KEYWORD11

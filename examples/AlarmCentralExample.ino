@@ -138,21 +138,6 @@ void startAlarm() {
     turnOn(SIREN);
 }
 
-//Lock the code execution and turn on the green led for show a file oppening error.
-void SDOpenFileFailed() {
-  // if the file didn't open, print an error and stay:
-    Serial.println("Error opening codes.txt, please review your SD Card");
-    turnOn(GREEN_LED);
-    delay(999999);
-}
-
-//Lock the code execution and turn on the red led for show a SDCard oppening error.
-void SDReadFailed() {
-    Serial.println("Initialization Failed! Please verify your SD Card and try Again");
-    digitalWrite(RED_LED, HIGH);
-    delay(999999);
-}
-
 //Load all the data from de SD card and put it into the Arduino RAM
 void loadData() {
   myFile = SD.open("codes.txt", FILE_WRITE);
