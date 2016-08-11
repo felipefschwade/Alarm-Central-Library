@@ -34,26 +34,20 @@ void SDOpenFileFailed();
 void SDReadFailed();
 void loadData();
 void addNewControl();
-//By default, the RF SENSOR pin is definited in RCswitch library on pin2
-/*
-  @TODO
-  A function that defines the pins in a easier way
-*/
-#define SENSOR_PIR1 3
+
+//Pins that will be used in the example
+#define SENSOR_PIR1 14 // Analog 0
 #define SDCARD 4
 #define NEW_CONTROL_BUTTON 5 
-#define SIREN 8
-#define RED_LED 6
-#define GREEN_LED 7
-#define INDEFINIDO -1
+#define SIREN 15 // Analog 1
+#define RED_LED 16 // Analog 2
+#define GREEN_LED 17 // Analog 3
 
 //Defining all global scope variables
-//The new control variable
-long int new_control;
 //The state control variable
 int state;
 //The possible status enum
-enum Status {
+enum _Status {
     ALARM_OFF,
     ALARM_ON,
     ALARM_STARTED,
@@ -61,18 +55,18 @@ enum Status {
   };
   
 //All the possible received signals
-enum receivedSignal {
+enum _receivedSignal {
     CONTROL_SIGNAL,
     SENSOR_SIGNAL,
     NEW_CONTROL_BUTTON_PRESSED
   };
 
 //Define the file containing all control codes
-File myFile;
+File _myFile;
 
 //TODO Auto control codes generation
 //Here you put the quantity of controls that you want in you 
-long int controls[];
+long int controls*;
 
 
 void setup() {
