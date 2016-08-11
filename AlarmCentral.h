@@ -22,6 +22,8 @@
 			int _greenLed;
 			int _redLed;
 			int _sirenPin;
+			unsigned long _currentMillis;
+			unsigned long _previousMillis;
 			void AlarmCentral::ledBlink(int _led, int s_peed_milis);
 			void AlarmCentral::turnOn(int _pin);
 			void AlarmCentral::turnOff(int _pin);

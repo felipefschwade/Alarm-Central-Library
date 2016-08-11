@@ -52,6 +52,14 @@ void AlarmCentral::setSirenPin(int sirenPin) {
 */
 void AlarmCentral::ledBlink(int led, int speed_milis) {
 
+   int state = digitalRead(led);
+   const long interval = speed_milis; 
+   _currentMillis = millis();
+    if (_currentMillis - _previousMillis >= interval) {
+      _previousMillis = _currentMillis;
+      //Invert the LED state, it always will make a blink
+      digitalWrite(led, !state);
+    }
 }
 /**
 	Put a pin on HIGH logic state
