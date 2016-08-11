@@ -8,7 +8,8 @@
 
 #ifndef AlarmCentral_h
 #define AlarmCentral_h
-
+	//A flag used to return undefined received signal
+	#define UNDEFINED -1
 	#include "Arduino.h"
 	class AlarmCentral {
 		public:

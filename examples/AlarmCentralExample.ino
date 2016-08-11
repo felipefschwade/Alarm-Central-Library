@@ -50,8 +50,6 @@ void addNewControl();
 //Defining all global scope variables
 //The new control variable
 long int new_control;
-//The timer to use on Blinks.
-unsigned long previousMillis = 0;
 //The state control variable
 int state;
 //The possible status enum
@@ -158,16 +156,6 @@ int receivedSignal() {
              return SENSOR_SIGNAL; 
         }
       return INDEFINIDO;
-}
-
-void ledBlink(int led, int speed_milis) {
-   int state = digitalRead(led);
-   const long interval = speed_milis; 
-   unsigned long currentMillis = millis();
-    if (currentMillis - previousMillis >= interval) {
-      previousMillis = currentMillis;
-      digitalWrite(led, !state);
-    }
 }
 
 void setAlarmOn() {
