@@ -108,9 +108,46 @@ int AlarmCentral::getReceivedSignal() {
         }    	
       return UNDEFINED;
 }
-
-
-
+/**
+	The alarm works as a state machine, it 
+	do it's actions according with the received
+	signal and it current state
+*/
+void AlarmCentral::treatReceivedSignal(int receivedSignal) {
+  switch (_state) {
+      case ALARM_OFF:
+          if (receivedSignal == CONTROL_SIGNAL) {
+              setAlarmOn();
+              break;
+            } else if (receivedSignal == NEW_CONTROL_BUTTON_PRESSED) {
+              setNewControlAddingState();
+              break;
+            }
+            ledBlink(_greenLed, 700);
+      break;
+      case ALARM_ON:
+          if (receivedSignal == CONTROL_SIGNAL) {
+              setAlarmOff();
+              break;
+          } else if (receivedSignal == SENSOR_SIGNAL) {
+              startAlarm();
+              break;
+          }
+          ledBlink(_redLed, 700);
+      break;
+      case ALARM_STARTED:
+          if (receivedSignal == CONTROL_SIGNAL) {
+                setAlarmOff();
+                break;
+              }
+           ledBlink(_redLed, 200);
+      break;
+      //Reset your arduino after adding a new control.
+      case NEW_CONTROL_ADDING:
+        addNewControl(receivedSignal);
+        break;
+    } 
+}
 /**
 	<----------------------------------- Private Functions ------------------------------------->
 */
@@ -252,7 +289,7 @@ void AlarmCentral::startAlarm() {
 	Insert a new control into the codes.txt file
 	and reload all the data into the arduino RAM
 */
-void AlarmCentral::addNewControl(int signalReceived) {
+void AlarmCentral::addNewControl(int _receivedSignal) {
   boolean flag = 0; //Set a flag that I'll be used to detect a user interation
         if (_mySwitch.available()) { //Search for a RF433Mhz signal
          turnOn(_greenLed);
@@ -280,7 +317,7 @@ void AlarmCentral::addNewControl(int signalReceived) {
           //Lock the file again if something went wrong
           SDOpenFileFailed(); 
          }
-       } else if (_signalReceived == NEW_CONTROL_BUTTON_PRESSED) { //Read the NEW_CONTROL_BUTTON STATE
+       } else if (_receivedSignal == NEW_CONTROL_BUTTON_PRESSED) { //Read the NEW_CONTROL_BUTTON STATE
           //Delay for the user don't accidetaly get again into this state
           delay(1000);
           flag = 1; //Mark the flag as tru

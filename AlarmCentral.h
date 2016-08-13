@@ -33,6 +33,7 @@
 			void setNewControlButtonPin(int newControlButtonPin);
 			void begin();
 			int getReceivedSignal();
+			void treatReceivedSignal(int receivedSignal);
 		private:
 			RCSwitch _mySwitch;
 			int _signalReceived;
