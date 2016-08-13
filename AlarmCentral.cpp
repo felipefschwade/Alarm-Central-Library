@@ -57,7 +57,7 @@ void AlarmCentral::setSirenPin(int sirenPin) {
 /**
 	Define the new_controll Button input pin
 */
-void setNewControlButtonPin(int newControlButtonPin) {
+void AlarmCentral::setNewControlButtonPin(int newControlButtonPin) {
 	_newControlButton = newControlButtonPin;
 }
 
