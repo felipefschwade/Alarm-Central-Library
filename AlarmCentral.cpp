@@ -224,7 +224,7 @@ void AlarmCentral::setAlarmOn() {
 	a noise and blink signals for the user for
 	HM comunication
 */
-void setAlarmOff() {
+void AlarmCentral::setAlarmOff() {
     Serial.println("Alarm Off"); // Debuggin Message
     //Always turn on the siren off
     turnOff(_sirenPin); 
@@ -235,4 +235,57 @@ void setAlarmOff() {
     turnOff(_redLed);
     sirenBeep(2);
 
+}
+/**
+	Set the state of the central Alarm and do
+	activate the siren to make noise
+*/
+void AlarmCentral::startAlarm() {
+    _state = ALARM_STARTED;  
+    Serial.println(_state);
+    Serial.println("Alarm STARTED");
+    turnOn(_sirenPin);
+}
+/**
+	Insert a new control into the codes.txt file
+	and reload all the data into the arduino RAM
+*/
+void AlarmCentral::addNewControl(int signalReceived) {
+  boolean flag = 0; //Set a flag that I'll be used to detect a user interation
+        if (_mySwitch.available()) { //Search for a RF433Mhz signal
+         turnOn(_greenLed);
+         _new_control = _mySwitch.getReceivedValue(); //put the received signal code into a new variable
+         Serial.println(_new_control); //Print the code (For debugging only)
+         _myFile = SD.open("codes.txt", FILE_WRITE); //Open the codes file to write the new code into the file
+        // if the file opened okay, write to it
+        if (_myFile) {
+          //Debuging messages
+          Serial.print("Writing the new code into the codes.txt..."); 
+          _myFile.println(_new_control);
+          _myFile.close(); //Close the readed file
+          Serial.println("Control Code save with success."); //More debuging Message
+          loadData(); //Reload the data into the Arduino RAM
+          //Make a loop to indicate using led blink that the control were successfull saved
+          for (int i=0; i <= 10; i++) {
+            //Proposital delay for avoid a accindetal Alarm Set while adding a control
+            turnOn(_greenLed);
+            delay(100);
+            turnOff(_greenLed);
+            delay(100);
+            flag = 1; //Mark the flag as true
+           }
+        } else {
+          //Lock the file again if something went wrong
+          SDOpenFileFailed(); 
+         }
+       } else if (_signalReceived == NEW_CONTROL_BUTTON_PRESSED) { //Read the NEW_CONTROL_BUTTON STATE
+          //Delay for the user don't accidetaly get again into this state
+          delay(1000);
+          flag = 1; //Mark the flag as tru
+       }
+      if (flag == 1) {
+        _mySwitch.resetAvailable(); //Reset the old receiver RF433Mhz code 
+        Serial.println("Alarm Off"); //Debuggin Message
+        _state = ALARM_OFF; //Set the next State
+      }  
 }

@@ -34,6 +34,7 @@
 			void begin();
 		private:
 			RCSwitch _mySwitch;
+			int _signalReceived;
 			int _newControlButton;
 			int _PIRSensors[];
 			int _greenLed;
@@ -75,6 +76,8 @@
 			void loadData();
 			void setAlarmOn();
 			void setAlarmOff();
+			void startAlarm();
+			void addNewControl(int signalReceived);
 	};
 
 #endif

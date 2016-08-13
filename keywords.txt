@@ -13,3 +13,5 @@ loadData			KEYWORD12
 setNewControlButtonPin		KEYWORD13
 setAlarmOn			KEYWORD14
 setAlarmOff			KEYWORD15
+startAlarm			KEYWORD16
+addNewControl		KEYWORD17

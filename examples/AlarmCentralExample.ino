@@ -101,19 +101,9 @@ void setNewControllAddingState() {
 *
 *
 **/
-void setAlarmOff() {
-    Serial.println("Alarm Off"); // Debuggin Message
-    turnOff(SIREN); 
-    //Delay to avoid an accidental alarm activitation while the control button is pressed
-    delay(300);
-    mySwitch.resetAvailable();
-    state = ALARM_OFF;
-    turnOff(RED_LED);
-    sirenBeep(2);
-    turnOff(RED_LED);
-}
 
-void startAlarm() {
+
+void AlarmCentral::startAlarm() {
     state = ALARM_STARTED;  
     Serial.println(state);
     Serial.println("Alarm STARTED");
