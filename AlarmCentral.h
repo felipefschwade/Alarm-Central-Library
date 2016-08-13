@@ -17,10 +17,12 @@
 	#define SD_PIN 4
 	#define SD_MOSI 11
 	#define SD_MISO 12
-	#define SD_CLK 13
+	#define SD_CLK 13 
 
+	//Including the third party required libraries
 	#include <Arduino.h>
 	#include <RCSwitch.h>
+	#include <vector>
 	class AlarmCentral {
 		public:
 			AlarmCentral(RCSwitch mySwitch);
