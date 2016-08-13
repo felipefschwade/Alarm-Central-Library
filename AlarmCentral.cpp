@@ -28,7 +28,9 @@ AlarmCentral::AlarmCentral(RCSwitch mySwitch) {
 	you can set one pin for each sensor.
 */
 void AlarmCentral::setPIRSensors(int sensors[]) {
-	_PIRSensors = sensors;
+	for (int i = 0; i < sizeof(sensors); ++i) {
+		_PIRSensors[i] = sensors[i];
+	}
 }
 
 /**
@@ -46,11 +48,16 @@ void AlarmCentral::setSirenPin(int sirenPin) {
 	_sirenPin = sirenPin;
 }
 /**
+	Define the new_controll Button input pin
+*/
+void setNewControlButtonPin(int newControlButtonPin)
+
+/**
 	Create all the structure needed to make the AlarmCentral works
 */
 void AlarmCentral::begin() {
-	for (int i = 0; i < sizeof(_PIRsensors); ++i) {
-		pinMode(_PIRsensors[i], INPUT);
+	for (int i = 0; i < sizeof(_PIRSensors); ++i) {
+		pinMode(_PIRSensors[i], INPUT);
 	}
 	pinMode(_greenLed, OUTPUT);
 	pinMode(_redLed, OUTPUT);
@@ -72,7 +79,7 @@ int AlarmCentral::getReceivedSignal() {
               for (int i=0; i < 21; i++) {
                   Serial.println(i); //Debug only
                   Serial.println(_controls[i]); //Debug only
-                  if (_controls[i] != NULL && _controls[i] == _mySwitch.getReceivedValue()) {
+                  if (_controls[i] == _mySwitch.getReceivedValue()) {
                     Serial.println("Control Signal");
                     _mySwitch.resetAvailable();
                     //Delay to slow down the RFsignal reading

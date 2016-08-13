@@ -10,3 +10,4 @@ begin				KEYWORD9
 SDOpenFileFailed	KEYWORD10
 SDReadFailed 		KEYWORD11
 loadData			KEYWORD12
+setNewControlButtonPin		KEYWORD13

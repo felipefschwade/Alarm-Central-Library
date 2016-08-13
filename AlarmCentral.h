@@ -30,6 +30,7 @@
 			void setPIRSensors(int sensors[]);
 			void setLedPins(int greenLed, int redLed);
 			void setSirenPin(int sirenPin);
+			void setNewControlButtonPin(int newControlButtonPin);
 			void begin();
 		private:
 			RCSwitch _mySwitch;
@@ -62,7 +63,7 @@
 				Here you put the quantity of controls that you want in you want
 				@TODO - A way to the user input the arraySize right on Arduino code
 			*/
-			long int _controls[21];
+			long int _controls[];
 			void ledBlink(int _led, int s_peed_milis);
 			void turnOn(int _pin);
 			void turnOff(int _pin);
