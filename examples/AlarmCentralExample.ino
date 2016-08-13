@@ -11,6 +11,7 @@
  ** RFReceiver is by default definited on pin 2
  * AlarmCentral.h for all the alarm control and actions
 */
+#include <RCSwitch.h>
 #include <SD.h>
 #include <SPI.h>
 #include <AlarmCentraL.h>

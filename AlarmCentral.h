@@ -5,7 +5,11 @@
 	MIT license
 
 */
-
+//Including the third party required libraries
+#include <Arduino.h>
+#include <RCSwitch.h>
+#include <SD.h>
+#include <SPI.h>
 #ifndef AlarmCentral_h
 #define AlarmCentral_h
 	//A flag used to return undefined received signal
@@ -19,20 +23,17 @@
 	#define SD_MISO 12
 	#define SD_CLK 13 
 
-	//Including the third party required libraries
-	#include <Arduino.h>
-	#include <RCSwitch.h>
-	#include <vector>
 	class AlarmCentral {
 		public:
 			AlarmCentral(RCSwitch mySwitch);
-			void setPIRSensors(int *sensors);
+			//The digital pins shall be included as an array like: [14,15,16,16]
+			void setPIRSensors(int sensors[]);
 			void setLedPins(int greenLed, int redLed);
 			void AlarmCentral::setSirenPin(int sirenPin);
 			void AlarmCentral::begin();
 		private:
 			RCSwitch _mySwitch;
-			int _PIRSensors;
+			int _PIRSensors[];
 			int _greenLed;
 			int _redLed;
 			int _sirenPin;
