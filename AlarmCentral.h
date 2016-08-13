@@ -34,6 +34,7 @@
 			void begin();
 		private:
 			RCSwitch _mySwitch;
+			int _newControlButton;
 			int _PIRSensors[];
 			int _greenLed;
 			int _redLed;

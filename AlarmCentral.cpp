@@ -29,6 +29,13 @@ AlarmCentral::AlarmCentral(RCSwitch mySwitch) {
 */
 void AlarmCentral::setPIRSensors(int sensors[]) {
 	for (int i = 0; i < sizeof(sensors); ++i) {
+		//Validate if the defined pins aren't any pin of the SPI protocol
+		if ( sensors[i] == SD_PIN ||
+			 sensors[i] == SD_MOSI ||
+			 sensors[i] == SD_MISO ||
+			 sensors[i] == SD_CLK) {
+			// @TODO - Throw a exception
+		}
 		_PIRSensors[i] = sensors[i];
 	}
 }
@@ -50,7 +57,9 @@ void AlarmCentral::setSirenPin(int sirenPin) {
 /**
 	Define the new_controll Button input pin
 */
-void setNewControlButtonPin(int newControlButtonPin)
+void setNewControlButtonPin(int newControlButtonPin) {
+	_newControlButton = newControlButtonPin;
+}
 
 /**
 	Create all the structure needed to make the AlarmCentral works
