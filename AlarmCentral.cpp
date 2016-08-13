@@ -82,6 +82,7 @@ void AlarmCentral::begin() {
 	it retunrs a UNDEFINED
 */
 int AlarmCentral::getReceivedSignal() {
+	   //Search for a RF433Mhz singal
        if (_mySwitch.available()) {
               Serial.println(_mySwitch.getReceivedValue()); // Debug Only
               Serial.println(); // Debug Only
@@ -98,12 +99,14 @@ int AlarmCentral::getReceivedSignal() {
               }
               _mySwitch.resetAvailable();
           }
-        if (digitalRead(NEW_CONTROL_BUTTON) == 0) {
+        if (digitalRead(_newControlButton) == 0) {
             return NEW_CONTROL_BUTTON_PRESSED;
         }
-       if (digitalRead(SENSOR_PIR1) == 0) {
-             return SENSOR_SIGNAL; 
-        }
+        for (int i = 0; i < sizeof(_PIRSensors); ++i) {
+        	if (digitalRead(_PIRSensors[i]) == 0) {
+	            return SENSOR_SIGNAL; 
+	        }
+        }    	
       return UNDEFINED;
 }
 
@@ -151,8 +154,10 @@ void AlarmCentral::sirenBeep(int times) {
 void AlarmCentral::SDOpenFileFailed() {
   // if the file didn't open, print an error and stay:
     Serial.println("Error opening codes.txt, please review your SD Card");
-    turnOn(GREEN_LED);
-    delay(999999999999999);
+    turnOn(_greenLed);
+    //Lock de processor into a infinite loop
+    while(1) {
+    }
 }
 /**
 	Make the code get locked and light up a LED
@@ -161,15 +166,17 @@ void AlarmCentral::SDOpenFileFailed() {
 */
 void AlarmCentral::SDReadFailed() {
     Serial.println("Initialization Failed! Please verify your SD Card and try Again");
-    digitalWrite(RED_LED, HIGH);
-    delay(9999999999999999);
+    turnOn(_redLed);
+    //Lock de processor into a infinite loop
+    while(1) {
+    }
 }
 
 /**
 	Load all the data from de SD card and put it into the Arduino RAM
 	for a better perfomance
 */
-void loadData() {
+void AlarmCentral::loadData() {
   _myFile = SD.open("codes.txt", FILE_WRITE);
   // Open the file for reading:
   _myFile = SD.open("codes.txt");
