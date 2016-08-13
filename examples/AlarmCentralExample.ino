@@ -81,17 +81,7 @@ void loop() {
     } 
   }
 
-void setAlarmOn() {
-    turnOff(GREEN_LED);
-    Serial.println("Alarm On");
-    state = ALARM_ON;
-    mySwitch.resetAvailable();
-    //Setting a delay to avoid turning the alarm off accidentally
-    delay(300);
-    sirenBeep(1);
-    Serial.println(state);
-    turnOff(GREEN_LED);  
-}
+ 
 
 void setNewControllAddingState() {
       state = NEW_CONTROL_ADDING;
@@ -112,7 +102,7 @@ void setNewControllAddingState() {
 *
 **/
 void setAlarmOff() {
-    Serial.println("Alarm Off");
+    Serial.println("Alarm Off"); // Debuggin Message
     turnOff(SIREN); 
     //Delay to avoid an accidental alarm activitation while the control button is pressed
     delay(300);

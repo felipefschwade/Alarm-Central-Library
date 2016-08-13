@@ -74,6 +74,7 @@
 			void SDReadFailed();
 			void loadData();
 			void setAlarmOn();
+			void setAlarmOff();
 	};
 
 #endif

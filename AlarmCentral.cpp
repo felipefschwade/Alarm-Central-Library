@@ -201,7 +201,14 @@ void AlarmCentral::loadData() {
     SDOpenFileFailed();
   }
 }
-
+/*
+--------------------------------------- ALARM STATE TRANSITION FUNCTIONS -------------
+*/
+/**
+	Set the state of the central Alarm and do
+	a noise and blink signals for the user for
+	HM comunication
+*/
 void AlarmCentral::setAlarmOn() {
     turnOff(_greenLed);
     Serial.println("Alarm On"); //Debugging Message
@@ -210,6 +217,22 @@ void AlarmCentral::setAlarmOn() {
     //Setting a delay to avoid turning the alarm off accidentally
     delay(300);
     sirenBeep(1);
-    Serial.println(_state);
-    turnOff(_greenLed);  
+    Serial.println(_state); 
+}
+/**
+	Set the state of the central Alarm and do
+	a noise and blink signals for the user for
+	HM comunication
+*/
+void setAlarmOff() {
+    Serial.println("Alarm Off"); // Debuggin Message
+    //Always turn on the siren off
+    turnOff(_sirenPin); 
+    //Delay to avoid an accidental alarm activitation while the control button is pressed
+    delay(300);
+    _mySwitch.resetAvailable();
+    _state = ALARM_OFF;
+    turnOff(_redLed);
+    sirenBeep(2);
+
 }
