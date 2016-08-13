@@ -12,7 +12,6 @@
 */
 #include <SD.h>
 #include <SPI.h>
-#include <RCSwitch.h>
 #include <AlarmCentraL.h>
 
 //Defining the RF433Mhz object
@@ -138,26 +137,7 @@ void startAlarm() {
     turnOn(SIREN);
 }
 
-//Load all the data from de SD card and put it into the Arduino RAM
-void loadData() {
-  myFile = SD.open("codes.txt", FILE_WRITE);
-  // Open the file for reading:
-  myFile = SD.open("codes.txt");
-  if (myFile) {
-    // read from the file until there's nothing else in it:
-    int i = 0;
-    while (myFile.available()) {
-     Serial.println("Lendo o arquivo");
-     controls[i] = myFile.parseInt();
-     Serial.println(controls[i]);
-     i++;
-    }
-    // close the file:
-    myFile.close();
-  } else {
-    SDOpenFileFailed();
-  }
-}
+
 //Insert a new control into the SDCard
 void addNewControl(int signalReceived) {
   boolean flag = 0; //Set a flag that I'll be used to detect a user interation

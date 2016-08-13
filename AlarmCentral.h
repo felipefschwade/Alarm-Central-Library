@@ -10,7 +10,8 @@
 #define AlarmCentral_h
 	//A flag used to return undefined received signal
 	#define UNDEFINED -1
-	#include "Arduino.h"
+	#include <Arduino.h>
+	#include <RCSwitch.h>
 	class AlarmCentral {
 		public:
 			AlarmCentral(RCSwitch mySwitch);
@@ -45,8 +46,11 @@
 			  };
 			//Define the file containing all control codes
 			File _myFile;
-			//Here you put the quantity of controls that you want in you 
-			long int _controls*;
+			/**
+				Here you put the quantity of controls that you want in you want
+				@TODO - A way to the user input the arraySize right on Arduino code
+			*/
+			long int _controls[21];
 			void AlarmCentral::ledBlink(int _led, int s_peed_milis);
 			void AlarmCentral::turnOn(int _pin);
 			void AlarmCentral::turnOff(int _pin);
