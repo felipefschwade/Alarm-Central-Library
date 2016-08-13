@@ -63,14 +63,14 @@
 				@TODO - A way to the user input the arraySize right on Arduino code
 			*/
 			long int _controls[21];
-			void AlarmCentral::ledBlink(int _led, int s_peed_milis);
-			void AlarmCentral::turnOn(int _pin);
-			void AlarmCentral::turnOff(int _pin);
-			void AlarmCentral::sirenBeep(int _times);
-			int AlarmCentral::getReceivedSignal();
-			void AlarmCentral::SDOpenFileFailed();
-			void AlarmCentral::SDReadFailed();
-			void AlarmCentral::loadData();
+			void ledBlink(int _led, int s_peed_milis);
+			void turnOn(int _pin);
+			void turnOff(int _pin);
+			void sirenBeep(int _times);
+			int getReceivedSignal();
+			void SDOpenFileFailed();
+			void SDReadFailed();
+			void loadData();
 	};
 
 #endif
