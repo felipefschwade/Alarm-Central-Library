@@ -27,7 +27,7 @@ AlarmCentral::AlarmCentral(RCSwitch mySwitch) {
 	one Arduino PIN. But if you want a better feedback from the central
 	you can set one pin for each sensor.
 */
-void AlarmCentral::setPIRSensors(int sensors) {
+void AlarmCentral::setPIRSensors(int sensors[]) {
 	_PIRSensors = sensors;
 }
 

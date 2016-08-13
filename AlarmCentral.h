@@ -29,8 +29,8 @@
 			//The digital pins shall be included as an array like: [14,15,16,16]
 			void setPIRSensors(int sensors[]);
 			void setLedPins(int greenLed, int redLed);
-			void AlarmCentral::setSirenPin(int sirenPin);
-			void AlarmCentral::begin();
+			void setSirenPin(int sirenPin);
+			void begin();
 		private:
 			RCSwitch _mySwitch;
 			int _PIRSensors[];
