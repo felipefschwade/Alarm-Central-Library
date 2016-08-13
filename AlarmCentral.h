@@ -10,6 +10,15 @@
 #define AlarmCentral_h
 	//A flag used to return undefined received signal
 	#define UNDEFINED -1
+	/**
+		These pins are defined for Arduino R3
+		For use it in other boards please change it below
+	*/
+	#define SD_PIN 4
+	#define SD_MOSI 11
+	#define SD_MISO 12
+	#define SD_CLK 13
+
 	#include <Arduino.h>
 	#include <RCSwitch.h>
 	class AlarmCentral {

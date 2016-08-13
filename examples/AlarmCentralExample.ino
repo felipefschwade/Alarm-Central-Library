@@ -6,6 +6,7 @@
  ** MISO - pin 12
  ** CLK - pin 13
  ** CS - pin 4
+ ** For other boards it's necessary to change the AlarmCentral.h File
  * RCSwitch..h for the RF433Mhz Receptor
  ** RFReceiver is by default definited on pin 2
  * AlarmCentral.h for all the alarm control and actions

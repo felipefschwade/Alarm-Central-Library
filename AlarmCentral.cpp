@@ -49,8 +49,8 @@ void AlarmCentral::setSirenPin(int sirenPin) {
 	Create all the structure needed to make the AlarmCentral works
 */
 void AlarmCentral::begin() {
-	for (int i = 0; i < sizeof(sensors); ++i) {
-		pinMode(sensors[i], INPUT);
+	for (int i = 0; i < sizeof(_PIRsensors); ++i) {
+		pinMode(_PIRsensors[i], INPUT);
 	}
 	pinMode(_greenLed, OUTPUT);
 	pinMode(_redLed, OUTPUT);
