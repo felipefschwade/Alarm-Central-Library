@@ -154,20 +154,20 @@ void AlarmCentral::SDReadFailed() {
 	for a better perfomance
 */
 void loadData() {
-  myFile = SD.open("codes.txt", FILE_WRITE);
+  _myFile = SD.open("codes.txt", FILE_WRITE);
   // Open the file for reading:
-  myFile = SD.open("codes.txt");
-  if (myFile) {
+  _myFile = SD.open("codes.txt");
+  if (_myFile) {
     // read from the file until there's nothing else in it:
     int i = 0;
-    while (myFile.available()) {
-     Serial.println("Lendo o arquivo");
-     controls[i] = myFile.parseInt();
-     Serial.println(controls[i]);
+    while (_myFile.available()) {
+     Serial.println("Lendo o arquivo"); //Debug Message
+     _controls[i] = _myFile.parseInt();
+     Serial.println(_controls[i]); //Debug Message
      i++;
     }
     // close the file:
-    myFile.close();
+    _myFile.close();
   } else {
     SDOpenFileFailed();
   }
