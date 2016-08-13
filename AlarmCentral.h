@@ -73,6 +73,7 @@
 			void SDOpenFileFailed();
 			void SDReadFailed();
 			void loadData();
+			void setAlarmOn();
 	};
 
 #endif

@@ -81,15 +81,6 @@ void loop() {
     } 
   }
 
-void initiatePins() {
-    pinMode(SENSOR_PIR1, INPUT);
-    pinMode(NEW_CONTROL_BUTTON, INPUT_PULLUP);
-    pinMode(SIREN, OUTPUT);
-    pinMode(RED_LED, OUTPUT);
-    pinMode(GREEN_LED, OUTPUT);
-}
-/
-
 void setAlarmOn() {
     turnOff(GREEN_LED);
     Serial.println("Alarm On");

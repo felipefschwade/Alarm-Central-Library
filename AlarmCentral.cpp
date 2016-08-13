@@ -71,6 +71,9 @@ void AlarmCentral::begin() {
 	pinMode(_greenLed, OUTPUT);
 	pinMode(_redLed, OUTPUT);
 	pinMode(_sirenPin, OUTPUT);
+	pinMode(_newControlButton, INPUT_PULLUP); //Using the arduino internal pullUp, use a own 10K resistor if you had some trouble
+	loadData();
+	_state = ALARM_OFF;
 }
 /**
 	<----------------------------------- Private Functions ------------------------------------->
@@ -177,6 +180,9 @@ void AlarmCentral::SDReadFailed() {
 	for a better perfomance
 */
 void AlarmCentral::loadData() {
+   if (!SD.begin(SD_PIN)) {
+   		SDReadFailed();
+   }
   _myFile = SD.open("codes.txt", FILE_WRITE);
   // Open the file for reading:
   _myFile = SD.open("codes.txt");
@@ -194,4 +200,16 @@ void AlarmCentral::loadData() {
   } else {
     SDOpenFileFailed();
   }
+}
+
+void AlarmCentral::setAlarmOn() {
+    turnOff(_greenLed);
+    Serial.println("Alarm On"); //Debugging Message
+    _state = ALARM_ON;
+    _mySwitch.resetAvailable(); //Reset the RF433Mhz last code
+    //Setting a delay to avoid turning the alarm off accidentally
+    delay(300);
+    sirenBeep(1);
+    Serial.println(_state);
+    turnOff(_greenLed);  
 }

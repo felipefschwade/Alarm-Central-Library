@@ -11,3 +11,4 @@ SDOpenFileFailed	KEYWORD10
 SDReadFailed 		KEYWORD11
 loadData			KEYWORD12
 setNewControlButtonPin		KEYWORD13
+void setAlarmOn		KEYWORD14
