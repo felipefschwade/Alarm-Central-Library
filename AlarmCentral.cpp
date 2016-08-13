@@ -148,3 +148,27 @@ void AlarmCentral::SDReadFailed() {
     digitalWrite(RED_LED, HIGH);
     delay(9999999999999999);
 }
+
+/**
+	Load all the data from de SD card and put it into the Arduino RAM
+	for a better perfomance
+*/
+void loadData() {
+  myFile = SD.open("codes.txt", FILE_WRITE);
+  // Open the file for reading:
+  myFile = SD.open("codes.txt");
+  if (myFile) {
+    // read from the file until there's nothing else in it:
+    int i = 0;
+    while (myFile.available()) {
+     Serial.println("Lendo o arquivo");
+     controls[i] = myFile.parseInt();
+     Serial.println(controls[i]);
+     i++;
+    }
+    // close the file:
+    myFile.close();
+  } else {
+    SDOpenFileFailed();
+  }
+}

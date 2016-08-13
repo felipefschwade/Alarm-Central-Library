@@ -45,7 +45,6 @@
 			  };
 			//Define the file containing all control codes
 			File _myFile;
-			//TODO Auto control codes generation
 			//Here you put the quantity of controls that you want in you 
 			long int _controls*;
 			void AlarmCentral::ledBlink(int _led, int s_peed_milis);
@@ -53,7 +52,9 @@
 			void AlarmCentral::turnOff(int _pin);
 			void AlarmCentral::sirenBeep(int _times);
 			int AlarmCentral::getReceivedSignal();
-
+			void AlarmCentral::SDOpenFileFailed();
+			void AlarmCentral::SDReadFailed();
+			void AlarmCentral::loadData();
 	};
 
 #endif
