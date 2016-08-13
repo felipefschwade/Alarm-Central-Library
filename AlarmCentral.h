@@ -32,6 +32,7 @@
 			void setSirenPin(int sirenPin);
 			void setNewControlButtonPin(int newControlButtonPin);
 			void begin();
+			int getReceivedSignal();
 		private:
 			RCSwitch _mySwitch;
 			int _signalReceived;
@@ -70,7 +71,6 @@
 			void turnOn(int _pin);
 			void turnOff(int _pin);
 			void sirenBeep(int _times);
-			int getReceivedSignal();
 			void SDOpenFileFailed();
 			void SDReadFailed();
 			void loadData();

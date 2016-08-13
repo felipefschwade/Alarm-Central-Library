@@ -76,10 +76,6 @@ void AlarmCentral::begin() {
 	_state = ALARM_OFF;
 }
 /**
-	<----------------------------------- Private Functions ------------------------------------->
-*/
-
-/**
 	Searche for any king of signal and return it,
 	if no one signal defineted on _receivedSignals var
 	it retunrs a UNDEFINED
@@ -112,6 +108,12 @@ int AlarmCentral::getReceivedSignal() {
         }    	
       return UNDEFINED;
 }
+
+
+
+/**
+	<----------------------------------- Private Functions ------------------------------------->
+*/
 
 /**
 	Make a led blink after a Ms definited time
@@ -292,7 +294,6 @@ void AlarmCentral::addNewControl(int signalReceived) {
 /**
 	Do some blinks for indicate the state transition
 */
-
 void AlarmCentral::setNewControlAddingState() {
       _state = NEW_CONTROL_ADDING;
       Serial.println("New Control Adding");
