@@ -78,6 +78,7 @@
 			void setAlarmOff();
 			void startAlarm();
 			void addNewControl(int signalReceived);
+			void setNewControlAddingState();
 	};
 
 #endif

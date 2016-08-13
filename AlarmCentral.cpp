@@ -289,3 +289,20 @@ void AlarmCentral::addNewControl(int signalReceived) {
         _state = ALARM_OFF; //Set the next State
       }  
 }
+/**
+	Do some blinks for indicate the state transition
+*/
+
+void AlarmCentral::setNewControlAddingState() {
+      _state = NEW_CONTROL_ADDING;
+      Serial.println("New Control Adding");
+      for (int i=0; i <= 2; i++) {
+        Serial.println(i);
+        turnOn(_greenLed);
+        turnOn(_redLed);
+        delay(300);
+        turnOff(_greenLed);
+        turnOff(_redLed);
+        delay(200);
+      }
+}

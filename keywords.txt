@@ -15,3 +15,4 @@ setAlarmOn			KEYWORD14
 setAlarmOff			KEYWORD15
 startAlarm			KEYWORD16
 addNewControl		KEYWORD17
+setNewControlAddingState KEYWORD18
