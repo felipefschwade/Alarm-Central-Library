@@ -248,7 +248,7 @@ void AlarmCentral::loadData() {
     }
     // close the file:
     _myFile.close();
-  } else {
+  } else if (!_myFile){
     SDOpenFileFailed();
   }
 }
@@ -325,10 +325,6 @@ void AlarmCentral::addNewControl(int _receivedSignal) {
             delay(100);
             flag = 1; //Mark the flag as true
            }
-        } else {
-          //Lock the file again if something went wrong
-          SDOpenFileFailed(); 
-         }
        } else if (_receivedSignal == NEW_CONTROL_BUTTON_PRESSED) { //Read the NEW_CONTROL_BUTTON STATE
           //Delay for the user don't accidetaly get again into this state
           delay(1000);
