@@ -325,6 +325,7 @@ void AlarmCentral::addNewControl(int _receivedSignal) {
             delay(100);
             flag = 1; //Mark the flag as true
            }
+        }
        } else if (_receivedSignal == NEW_CONTROL_BUTTON_PRESSED) { //Read the NEW_CONTROL_BUTTON STATE
           //Delay for the user don't accidetaly get again into this state
           delay(1000);
