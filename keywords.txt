@@ -17,3 +17,4 @@ startAlarm			KEYWORD16
 addNewControl		KEYWORD17
 setNewControlAddingState 	KEYWORD18
 treatReceivedSignal 	KEYWORD19
+setSirenPin 		KEYWORD20
