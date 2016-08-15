@@ -18,3 +18,4 @@ addNewControl		KEYWORD17
 setNewControlAddingState 	KEYWORD18
 treatReceivedSignal 	KEYWORD19
 setSirenPin 		KEYWORD20
+getReceivedSignal	KEYWORD21
