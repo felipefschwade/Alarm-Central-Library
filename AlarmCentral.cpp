@@ -248,7 +248,7 @@ void AlarmCentral::loadData() {
     }
     // close the file:
     _myFile.close();
-  } else if (!_myFile){
+  } else {
     SDOpenFileFailed();
   }
 }
@@ -315,6 +315,7 @@ void AlarmCentral::addNewControl(int _receivedSignal) {
           _myFile.println(_new_control);
           _myFile.close(); //Close the readed file
           Serial.println("Control Code save with success."); //More debuging Message
+          _myFile.close();
           loadData(); //Reload the data into the Arduino RAM
           //Make a loop to indicate using led blink that the control were successfull saved
           for (int i=0; i <= 10; i++) {
