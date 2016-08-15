@@ -34,7 +34,19 @@ void AlarmCentral::setPIRSensors(int sensors[]) {
 			 sensors[i] == SD_MOSI ||
 			 sensors[i] == SD_MISO ||
 			 sensors[i] == SD_CLK) {
-			// @TODO - Throw a exception
+			/**
+      Create a infinite loop to make the user reset the Board and replace de pins,
+      In this loop the Red and Green will blink alternated.
+      */
+      while(1) {
+        Serial.println("Invalid PIN, the pins: 10,11,12 and 4 Are for the SDCard Only, please switch the pins");
+        turnOn(_redLed);
+        delay(200);
+        turnOff(_redLed);
+        turnOn(_greenLed);
+        delay(200);
+        turnOff(_greenLed);
+      }
 		}
 		_PIRSensors[i] = sensors[i];
 	}
