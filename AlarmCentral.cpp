@@ -19,6 +19,11 @@ AlarmCentral::AlarmCentral(RCSwitch mySwitch) {
 	_mySwitch.enableReceive(0);
 	//The timer to use on Blinks.
 	_previousMillis = 0;
+  if (!SD.begin(SD_PIN)) {
+      SDReadFailed();
+   }
+  _myFile = SD.open("codes.txt", FILE_WRITE);
+  _myFile.close();
 }
 
 /**
@@ -97,7 +102,8 @@ int AlarmCentral::getReceivedSignal() {
        if (_mySwitch.available()) {
               Serial.println(_mySwitch.getReceivedValue()); // Debug Only
               Serial.println(); // Debug Only
-              for (int i=0; i < 21; i++) {
+              Serial.println(sizeof(_controls)); //Debug Only
+              for (int i=0; i < sizeof(_controls); i++) {
                   Serial.println(i); //Debug only
                   Serial.println(_controls[i]); //Debug only
                   if (_controls[i] == _mySwitch.getReceivedValue()) {
@@ -231,11 +237,7 @@ void AlarmCentral::SDReadFailed() {
 	for a better perfomance
 */
 void AlarmCentral::loadData() {
-   if (!SD.begin(SD_PIN)) {
-   		SDReadFailed();
-   }
-  _myFile = SD.open("codes.txt", FILE_WRITE);
-  // Open the file for reading:
+  // Open the file for create a codes.txt
   _myFile = SD.open("codes.txt");
   if (_myFile) {
     // read from the file until there's nothing else in it:
@@ -246,6 +248,7 @@ void AlarmCentral::loadData() {
      Serial.println(_controls[i]); //Debug Message
      i++;
     }
+    Serial.println(sizeof(_controls));// Debug
     // close the file:
     _myFile.close();
   } else {
@@ -315,10 +318,9 @@ void AlarmCentral::addNewControl(int _receivedSignal) {
           _myFile.println(_new_control);
           _myFile.close(); //Close the readed file
           Serial.println("Control Code save with success."); //More debuging Message
-          _myFile.close();
           loadData(); //Reload the data into the Arduino RAM
           //Make a loop to indicate using led blink that the control were successfull saved
-          for (int i=0; i <= 10; i++) {
+          for (int i=0; i <= 5; i++) {
             //Proposital delay for avoid a accindetal Alarm Set while adding a control
             turnOn(_greenLed);
             delay(100);
