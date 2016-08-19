@@ -33,7 +33,7 @@ AlarmCentral::AlarmCentral(RCSwitch mySwitch) {
 	you can set one pin for each sensor.
 */
 void AlarmCentral::setPIRSensors(int sensors[]) {
-	for (int i = 0; i < sizeof(sensors); ++i) {
+	for (int i = 0; i < 70; ++i) {
 		//Validate if the defined pins aren't any pin of the SPI protocol
 		if ( sensors[i] == SD_PIN ||
 			 sensors[i] == SD_MOSI ||
@@ -53,6 +53,15 @@ void AlarmCentral::setPIRSensors(int sensors[]) {
         turnOff(_greenLed);
       }
 		}
+    //Debug message
+     if (!sensors[i]) {
+        _PIRqty = i;
+        Serial.println("Quantidade: ");
+        Serial.println(_PIRqty);
+        break;
+     }
+     Serial.println("Sensor: ");
+     Serial.println(sensors[i]);
 		_PIRSensors[i] = sensors[i];
 	}
 }
@@ -82,7 +91,7 @@ void AlarmCentral::setNewControlButtonPin(int newControlButtonPin) {
 	Create all the structure needed to make the AlarmCentral works
 */
 void AlarmCentral::begin() {
-	for (int i = 0; i < sizeof(_PIRSensors); ++i) {
+	for (int i = 0; i < _PIRqty; ++i) {
 		pinMode(_PIRSensors[i], INPUT);
 	}
 	pinMode(_greenLed, OUTPUT);
@@ -103,7 +112,7 @@ int AlarmCentral::getReceivedSignal() {
               Serial.println(_mySwitch.getReceivedValue()); // Debug Only
               Serial.println(); // Debug Only
               Serial.println(sizeof(_controls)); //Debug Only
-              for (int i=0; i < sizeof(_controls); i++) {
+              for (int i=0; i < _controlsqty; i++) {
                   Serial.println(i); //Debug only
                   Serial.println(_controls[i]); //Debug only
                   if (_controls[i] == _mySwitch.getReceivedValue()) {
@@ -119,7 +128,7 @@ int AlarmCentral::getReceivedSignal() {
         if (digitalRead(_newControlButton) == 0) {
             return NEW_CONTROL_BUTTON_PRESSED;
         }
-        for (int i = 0; i < sizeof(_PIRSensors); ++i) {
+        for (int i = 0; i < _PIRqty; ++i) {
         	if (digitalRead(_PIRSensors[i]) == 0) {
 	            return SENSOR_SIGNAL; 
 	        }
@@ -248,7 +257,8 @@ void AlarmCentral::loadData() {
      Serial.println(_controls[i]); //Debug Message
      i++;
     }
-    Serial.println(sizeof(_controls));// Debug
+    _controlsqty = i;
+    Serial.println(_controlsqty);// Debug
     // close the file:
     _myFile.close();
   } else {

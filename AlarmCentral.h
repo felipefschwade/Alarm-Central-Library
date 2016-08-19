@@ -42,6 +42,8 @@
 			int _greenLed;
 			int _redLed;
 			int _sirenPin;
+			int _PIRqty;
+			int _controlsqty;
 			//The new control variable for a better code understanding
 			long int _new_control;
 			unsigned long _currentMillis;
