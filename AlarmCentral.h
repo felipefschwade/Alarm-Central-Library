@@ -27,7 +27,7 @@
 		public:
 			AlarmCentral(RCSwitch mySwitch);
 			//The digital pins shall be included as an array like: [14,15,16,16]
-			void setPIRSensors(int sensors[]);
+			void addPIRSensor(int sensor);
 			void setLedPins(int greenLed, int redLed);
 			void setSirenPin(int sirenPin);
 			void setNewControlButtonPin(int newControlButtonPin);
@@ -38,11 +38,11 @@
 			RCSwitch _mySwitch;
 			int _signalReceived;
 			int _newControlButton;
-			int _PIRSensors[];
+			int _PIRSensors[20];
 			int _greenLed;
 			int _redLed;
 			int _sirenPin;
-			int _PIRqty;
+			int _PIRqty = 1;
 			int _controlsqty;
 			//The new control variable for a better code understanding
 			long int _new_control;
@@ -82,6 +82,7 @@
 			void startAlarm();
 			void addNewControl(int signalReceived);
 			void setNewControlAddingState();
+			void verifyPin(int pin);
 	};
 
 #endif

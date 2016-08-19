@@ -32,38 +32,9 @@ AlarmCentral::AlarmCentral(RCSwitch mySwitch) {
 	one Arduino PIN. But if you want a better feedback from the central
 	you can set one pin for each sensor.
 */
-void AlarmCentral::setPIRSensors(int sensors[]) {
-	for (int i = 0; i < 70; ++i) {
-		//Validate if the defined pins aren't any pin of the SPI protocol
-		if ( sensors[i] == SD_PIN ||
-			 sensors[i] == SD_MOSI ||
-			 sensors[i] == SD_MISO ||
-			 sensors[i] == SD_CLK) {
-			/**
-      Create a infinite loop to make the user reset the Board and replace de pins,
-      In this loop the Red and Green will blink alternated.
-      */
-      while(1) {
-        Serial.println("Invalid PIN, the pins: 10,11,12 and 4 Are for the SDCard Only, please switch the pins");
-        turnOn(_redLed);
-        delay(200);
-        turnOff(_redLed);
-        turnOn(_greenLed);
-        delay(200);
-        turnOff(_greenLed);
-      }
-		}
-    //Debug message
-     if (!sensors[i]) {
-        _PIRqty = i;
-        Serial.println("Quantidade: ");
-        Serial.println(_PIRqty);
-        break;
-     }
-     Serial.println("Sensor: ");
-     Serial.println(sensors[i]);
-		_PIRSensors[i] = sensors[i];
-	}
+void AlarmCentral::addPIRSensor(int sensor) {
+      _PIRSensors[_PIRqty - 1] = sensor;
+      _PIRqty++;
 }
 
 /**
@@ -92,13 +63,19 @@ void AlarmCentral::setNewControlButtonPin(int newControlButtonPin) {
 */
 void AlarmCentral::begin() {
 	for (int i = 0; i < _PIRqty; ++i) {
+    Serial.println(_PIRSensors[i]);
+    verifyPin(_PIRSensors[i]);
 		pinMode(_PIRSensors[i], INPUT);
 	}
 	pinMode(_greenLed, OUTPUT);
+  verifyPin(_greenLed);
 	pinMode(_redLed, OUTPUT);
+  verifyPin(_redLed);
 	pinMode(_sirenPin, OUTPUT);
+  verifyPin(_sirenPin);
 	pinMode(_newControlButton, INPUT_PULLUP); //Using the arduino internal pullUp, use a own 10K resistor if you had some trouble
-	loadData();
+	verifyPin(_newControlButton);
+  loadData();
 	_state = ALARM_OFF;
 }
 /**
@@ -265,6 +242,27 @@ void AlarmCentral::loadData() {
     SDOpenFileFailed();
   }
 }
+
+void AlarmCentral::verifyPin(int pin) {
+  //Validate if the defined pins aren't any pin of the SPI protocol
+    if ( pin == SD_PIN ||
+       pin == SD_MOSI ||
+       pin == SD_MISO ||
+       pin == SD_CLK) {
+      /**
+      Create a infinite loop to make the user reset the Board and replace de pins,
+      In this loop the Arduino Led and RX will blink fast.
+      */
+      pinMode(13, OUTPUT);
+      while(1) {
+        Serial.println("Invalid PIN, the pins: 10,11,12 and 4 Are for the SDCard Only, please switch the pins");
+        digitalWrite(13, HIGH);
+        delay(200);
+        digitalWrite(13, LOW);
+      }
+    }
+}
+
 /*
 --------------------------------------- ALARM STATE TRANSITION FUNCTIONS -------------
 */
