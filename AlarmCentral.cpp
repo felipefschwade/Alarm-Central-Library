@@ -255,7 +255,7 @@ void AlarmCentral::verifyPin(int pin) {
       */
       pinMode(13, OUTPUT);
       while(1) {
-        Serial.println("Invalid PIN, the pins: 10,11,12 and 4 Are for the SDCard Only, please switch the pins");
+        Serial.println("Invalid PIN, the pins: 13,11,12 and 4 Are for the SDCard Only, please switch the pins");
         digitalWrite(13, HIGH);
         delay(200);
         digitalWrite(13, LOW);
