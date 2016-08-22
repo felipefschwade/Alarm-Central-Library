@@ -19,11 +19,6 @@ AlarmCentral::AlarmCentral(RCSwitch mySwitch) {
 	_mySwitch.enableReceive(0);
 	//The timer to use on Blinks.
 	_previousMillis = 0;
-  if (!SD.begin(SD_PIN)) {
-      SDReadFailed();
-   }
-  _myFile = SD.open("codes.txt", FILE_WRITE);
-  _myFile.close();
 }
 
 /**
@@ -75,6 +70,11 @@ void AlarmCentral::begin() {
   verifyPin(_sirenPin);
 	pinMode(_newControlButton, INPUT_PULLUP); //Using the arduino internal pullUp, use a own 10K resistor if you had some trouble
 	verifyPin(_newControlButton);
+   if (!SD.begin(SD_PIN)) {
+      SDReadFailed();
+   }
+  _myFile = SD.open("codes.txt", FILE_WRITE);
+  _myFile.close();
   loadData();
 	_state = ALARM_OFF;
 }
