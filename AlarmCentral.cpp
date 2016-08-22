@@ -75,9 +75,6 @@ void AlarmCentral::begin() {
   verifyPin(_sirenPin);
 	pinMode(_newControlButton, INPUT_PULLUP); //Using the arduino internal pullUp, use a own 10K resistor if you had some trouble
 	verifyPin(_newControlButton);
-  if (!!SD.begin(4)) {
-    SDReadFailed();
-  }
   loadData();
 	_state = ALARM_OFF;
 }
