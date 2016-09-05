@@ -1,5 +1,5 @@
 # AlarmCentral Library
-A biblioteca de central de alarme para o Arduino.
+Uma biblioteca para uma central de alarme utilizando o Arduino.
 ## Objetivo
 Esta biblioteca *Open-Soure* foi criada destinada aqueles que queiram
 uma solução simples e barata para segurança doméstica.
