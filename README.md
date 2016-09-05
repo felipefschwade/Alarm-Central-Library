@@ -13,3 +13,4 @@ uma solução simples e barata para segurança doméstica.
 ## Softwares de terceiros necessário
 Para o funcionamento desta central foram utilizados outras bibliotecas fornecidas por terceiros:
 * [RF433Mhz](https://github.com/sui77/rc-switch)
+* [Arduino SD and SPI](https://www.arduino.cc/en/Reference/SD)
