@@ -1,4 +1,4 @@
-# AlarmCentral-Master
+# AlarmCentral Library
 The Alarm Central Arduino library
 ## Objective
 This Open-Source Alarm Central was created for whom that want to use
