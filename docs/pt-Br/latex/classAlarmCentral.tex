@@ -1,0 +1,333 @@
+\hypertarget{classAlarmCentral}{\section{Referência da Classe Alarm\+Central}
+\label{classAlarmCentral}\index{Alarm\+Central@{Alarm\+Central}}
+}
+\subsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classAlarmCentral_a20cf0b433a5f7a745bad9fdceada83ed}{Alarm\+Central} (R\+C\+Switch my\+Switch)
+\item 
+void \hyperlink{classAlarmCentral_a309842cb51ffc4cf5c0b31d177accd8e}{add\+P\+I\+R\+Sensor} (int sensor)
+\item 
+void \hyperlink{classAlarmCentral_a1c8793e3ca800e7f5446fb20b5eed3f2}{set\+Led\+Pins} (int green\+Led, int red\+Led)
+\item 
+void \hyperlink{classAlarmCentral_a98cb7cc543581e2fad8257e3d200a7e4}{set\+Siren\+Pin} (int siren\+Pin)
+\item 
+void \hyperlink{classAlarmCentral_a996dc61f1e4908f7c61d52fc20cd3126}{set\+New\+Control\+Button\+Pin} (int new\+Control\+Button\+Pin)
+\item 
+void \hyperlink{classAlarmCentral_a28f388825ec7caeea038dcff3632b8b6}{begin} ()
+\item 
+int \hyperlink{classAlarmCentral_a687b130505b9500ac8e96a6b8b8eaf85}{get\+Received\+Signal} ()
+\item 
+void \hyperlink{classAlarmCentral_a0f7836737d8de5b39dc33d257f2bb88f}{treat\+Received\+Signal} (int received\+Signal)
+\end{DoxyCompactItemize}
+\subsection*{Tipos Privados}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classAlarmCentral_a05d576dae5c6c13199e53aefee2520c4}{enum {\bfseries \+\_\+\+Status} \{ {\bfseries A\+L\+A\+R\+M\+\_\+\+O\+F\+F}, 
+{\bfseries A\+L\+A\+R\+M\+\_\+\+O\+N}, 
+{\bfseries A\+L\+A\+R\+M\+\_\+\+S\+T\+A\+R\+T\+E\+D}, 
+{\bfseries N\+E\+W\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+A\+D\+D\+I\+N\+G}
+ \}}\label{classAlarmCentral_a05d576dae5c6c13199e53aefee2520c4}
+
+\item 
+\hypertarget{classAlarmCentral_a8a169a9915dddbb4644643bc05780870}{enum {\bfseries \+\_\+received\+Signal} \{ {\bfseries C\+O\+N\+T\+R\+O\+L\+\_\+\+S\+I\+G\+N\+A\+L}, 
+{\bfseries S\+E\+N\+S\+O\+R\+\_\+\+S\+I\+G\+N\+A\+L}, 
+{\bfseries N\+E\+W\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+P\+R\+E\+S\+S\+E\+D}
+ \}}\label{classAlarmCentral_a8a169a9915dddbb4644643bc05780870}
+
+\end{DoxyCompactItemize}
+\subsection*{Métodos Privados}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classAlarmCentral_afdb07ab272d4a35af8d63fbfe01bf275}{led\+Blink} (int \+\_\+led, int s\+\_\+peed\+\_\+milis)
+\item 
+void \hyperlink{classAlarmCentral_ad40865ee4dbd43582ab96290ba3ffedf}{turn\+On} (int \+\_\+pin)
+\item 
+void \hyperlink{classAlarmCentral_ae3ce5787006fdf74904f4d13d4fd9ef1}{turn\+Off} (int \+\_\+pin)
+\item 
+void \hyperlink{classAlarmCentral_a9ad83822d0cab018346818d506c82e01}{siren\+Beep} (int \+\_\+times)
+\item 
+void \hyperlink{classAlarmCentral_aa036475859e8ff772b76456cd03a6edb}{S\+D\+Open\+File\+Failed} ()
+\item 
+void \hyperlink{classAlarmCentral_ada8da78dc55241536625a0585903906b}{S\+D\+Read\+Failed} ()
+\item 
+void \hyperlink{classAlarmCentral_a8e5c2c61c973d675cd8218a6f0f9c13c}{load\+Data} ()
+\item 
+void \hyperlink{classAlarmCentral_a084c1a6f0fcf525f142db938beb66754}{set\+Alarm\+On} ()
+\item 
+void \hyperlink{classAlarmCentral_a58fb4e4ff18e9ba38c604b30b21648ba}{set\+Alarm\+Off} ()
+\item 
+void \hyperlink{classAlarmCentral_ac6f4bc6e3bf8a1625a988fac07da56fc}{start\+Alarm} ()
+\item 
+void \hyperlink{classAlarmCentral_aa66eefb693fc8b45a7ecaac806344818}{add\+New\+Control} (int signal\+Received)
+\item 
+void \hyperlink{classAlarmCentral_ac6c9c892c47b5afd78d5f9d4e0f8b650}{set\+New\+Control\+Adding\+State} ()
+\item 
+void \hyperlink{classAlarmCentral_a1f48ab01d759a081252ee956e70f0806}{verify\+Pin} (int pin)
+\end{DoxyCompactItemize}
+\subsection*{Atributos Privados}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classAlarmCentral_a6654dd4b64482cf0aadf70565f4481ac}{R\+C\+Switch {\bfseries \+\_\+my\+Switch}}\label{classAlarmCentral_a6654dd4b64482cf0aadf70565f4481ac}
+
+\item 
+\hypertarget{classAlarmCentral_a41b71f1c81a87c3b776910b174ed1511}{int {\bfseries \+\_\+signal\+Received}}\label{classAlarmCentral_a41b71f1c81a87c3b776910b174ed1511}
+
+\item 
+\hypertarget{classAlarmCentral_ab7cff19ce570cd3ec9c1cc686143e9ba}{int {\bfseries \+\_\+new\+Control\+Button}}\label{classAlarmCentral_ab7cff19ce570cd3ec9c1cc686143e9ba}
+
+\item 
+\hypertarget{classAlarmCentral_a407200a824f48addb797b497a184c2af}{int {\bfseries \+\_\+\+P\+I\+R\+Sensors} \mbox{[}20\mbox{]}}\label{classAlarmCentral_a407200a824f48addb797b497a184c2af}
+
+\item 
+\hypertarget{classAlarmCentral_a822c6dbde10cd85c4999b51c7ae7d3df}{int {\bfseries \+\_\+green\+Led}}\label{classAlarmCentral_a822c6dbde10cd85c4999b51c7ae7d3df}
+
+\item 
+\hypertarget{classAlarmCentral_a50637825cf8c1ba46ca4c74622ecf223}{int {\bfseries \+\_\+red\+Led}}\label{classAlarmCentral_a50637825cf8c1ba46ca4c74622ecf223}
+
+\item 
+\hypertarget{classAlarmCentral_a532efd760a60ddeac4d96dcc2299e928}{int {\bfseries \+\_\+siren\+Pin}}\label{classAlarmCentral_a532efd760a60ddeac4d96dcc2299e928}
+
+\item 
+\hypertarget{classAlarmCentral_a5a6bcc064a4e03ea863d8f9c63be19c2}{int {\bfseries \+\_\+\+P\+I\+Rqty} = 1}\label{classAlarmCentral_a5a6bcc064a4e03ea863d8f9c63be19c2}
+
+\item 
+\hypertarget{classAlarmCentral_ae66d36390bc3327a6c97e3bf93dd3f0b}{int {\bfseries \+\_\+controlsqty}}\label{classAlarmCentral_ae66d36390bc3327a6c97e3bf93dd3f0b}
+
+\item 
+\hypertarget{classAlarmCentral_aff67f231ac00886c7d5671935626663f}{long int {\bfseries \+\_\+new\+\_\+control}}\label{classAlarmCentral_aff67f231ac00886c7d5671935626663f}
+
+\item 
+\hypertarget{classAlarmCentral_ad870da000f49a2079517153e3d59ddd4}{unsigned long {\bfseries \+\_\+current\+Millis}}\label{classAlarmCentral_ad870da000f49a2079517153e3d59ddd4}
+
+\item 
+\hypertarget{classAlarmCentral_af21477409ecf51f35f64ae74017b004d}{unsigned long {\bfseries \+\_\+previous\+Millis}}\label{classAlarmCentral_af21477409ecf51f35f64ae74017b004d}
+
+\item 
+\hypertarget{classAlarmCentral_a11d3df9174f479fb47140c6541e02f9c}{int {\bfseries \+\_\+state}}\label{classAlarmCentral_a11d3df9174f479fb47140c6541e02f9c}
+
+\item 
+\hypertarget{classAlarmCentral_a6f88789b1180ff02597e7837df969d0b}{File {\bfseries \+\_\+my\+File}}\label{classAlarmCentral_a6f88789b1180ff02597e7837df969d0b}
+
+\item 
+\hypertarget{classAlarmCentral_aec9cd3106b6f29a18825deea32f62f04}{long int {\bfseries \+\_\+controls} \mbox{[}$\,$\mbox{]}}\label{classAlarmCentral_aec9cd3106b6f29a18825deea32f62f04}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Construtores \& Destrutores}
+\hypertarget{classAlarmCentral_a20cf0b433a5f7a745bad9fdceada83ed}{\index{Alarm\+Central@{Alarm\+Central}!Alarm\+Central@{Alarm\+Central}}
+\index{Alarm\+Central@{Alarm\+Central}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{Alarm\+Central}]{\setlength{\rightskip}{0pt plus 5cm}Alarm\+Central\+::\+Alarm\+Central (
+\begin{DoxyParamCaption}
+\item[{R\+C\+Switch}]{my\+Switch}
+\end{DoxyParamCaption}
+)}}\label{classAlarmCentral_a20cf0b433a5f7a745bad9fdceada83ed}
+Construtor da classe Constroi um objeto Alarm central. 
+\begin{DoxyParams}{Parâmetros}
+{\em my\+Swtich} & O objeto R\+C\+Swtich responsável pela decodificação 433\+Mhz. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Métodos}
+\hypertarget{classAlarmCentral_aa66eefb693fc8b45a7ecaac806344818}{\index{Alarm\+Central@{Alarm\+Central}!add\+New\+Control@{add\+New\+Control}}
+\index{add\+New\+Control@{add\+New\+Control}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{add\+New\+Control}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::add\+New\+Control (
+\begin{DoxyParamCaption}
+\item[{int}]{\+\_\+received\+Signal}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classAlarmCentral_aa66eefb693fc8b45a7ecaac806344818}
+Insere um novo código no arquivo de controles 
+\begin{DoxyParams}{Parâmetros}
+{\em received\+Signal} & Sinal utilizado para a central voltar ao modo desligado caso o botão de adicionar novo controle seja pressionado novamente \\
+\hline
+\end{DoxyParams}
+\hypertarget{classAlarmCentral_a309842cb51ffc4cf5c0b31d177accd8e}{\index{Alarm\+Central@{Alarm\+Central}!add\+P\+I\+R\+Sensor@{add\+P\+I\+R\+Sensor}}
+\index{add\+P\+I\+R\+Sensor@{add\+P\+I\+R\+Sensor}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{add\+P\+I\+R\+Sensor}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::add\+P\+I\+R\+Sensor (
+\begin{DoxyParamCaption}
+\item[{int}]{sensor}
+\end{DoxyParamCaption}
+)}}\label{classAlarmCentral_a309842cb51ffc4cf5c0b31d177accd8e}
+Define os pinos que irão funcionar como sensores de I\+R, você pode adicionar varios sensores em um único pino se os ligar em série. 
+\begin{DoxyParams}{Parâmetros}
+{\em sensor} & O pino de entrada que será um sensor \\
+\hline
+\end{DoxyParams}
+\hypertarget{classAlarmCentral_a28f388825ec7caeea038dcff3632b8b6}{\index{Alarm\+Central@{Alarm\+Central}!begin@{begin}}
+\index{begin@{begin}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classAlarmCentral_a28f388825ec7caeea038dcff3632b8b6}
+Cria a infra-\/estrutura responsável pelo funcionamento da central \hypertarget{classAlarmCentral_a687b130505b9500ac8e96a6b8b8eaf85}{\index{Alarm\+Central@{Alarm\+Central}!get\+Received\+Signal@{get\+Received\+Signal}}
+\index{get\+Received\+Signal@{get\+Received\+Signal}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{get\+Received\+Signal}]{\setlength{\rightskip}{0pt plus 5cm}int Alarm\+Central\+::get\+Received\+Signal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classAlarmCentral_a687b130505b9500ac8e96a6b8b8eaf85}
+Procura pelos sinais possíveis e retorna qual foi o sinal recebido, se nenhum sinal for recebido, retorna U\+N\+D\+E\+F\+I\+N\+E\+D \hypertarget{classAlarmCentral_afdb07ab272d4a35af8d63fbfe01bf275}{\index{Alarm\+Central@{Alarm\+Central}!led\+Blink@{led\+Blink}}
+\index{led\+Blink@{led\+Blink}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{led\+Blink}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::led\+Blink (
+\begin{DoxyParamCaption}
+\item[{int}]{led, }
+\item[{int}]{speed\+\_\+milis}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classAlarmCentral_afdb07ab272d4a35af8d63fbfe01bf275}
+$<$-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/------ Private Functions -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/------$>$ Faz um led piscar após o tempo determinado em milisegundos. 
+\begin{DoxyParams}{Parâmetros}
+{\em led} & O pino do led escolhido \\
+\hline
+{\em speed\+\_\+milis} & A velocidade que ele deverá piscar em Ms \\
+\hline
+\end{DoxyParams}
+\hypertarget{classAlarmCentral_a8e5c2c61c973d675cd8218a6f0f9c13c}{\index{Alarm\+Central@{Alarm\+Central}!load\+Data@{load\+Data}}
+\index{load\+Data@{load\+Data}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{load\+Data}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::load\+Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classAlarmCentral_a8e5c2c61c973d675cd8218a6f0f9c13c}
+Carrega os códigos dos controles no S\+D para a memória R\+A\+M do Arduino \hypertarget{classAlarmCentral_aa036475859e8ff772b76456cd03a6edb}{\index{Alarm\+Central@{Alarm\+Central}!S\+D\+Open\+File\+Failed@{S\+D\+Open\+File\+Failed}}
+\index{S\+D\+Open\+File\+Failed@{S\+D\+Open\+File\+Failed}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{S\+D\+Open\+File\+Failed}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::\+S\+D\+Open\+File\+Failed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classAlarmCentral_aa036475859e8ff772b76456cd03a6edb}
+Liga o led verde e trava o processamento, indicando que ocorreu algum problema durante a leitura do arquivo. \hypertarget{classAlarmCentral_ada8da78dc55241536625a0585903906b}{\index{Alarm\+Central@{Alarm\+Central}!S\+D\+Read\+Failed@{S\+D\+Read\+Failed}}
+\index{S\+D\+Read\+Failed@{S\+D\+Read\+Failed}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{S\+D\+Read\+Failed}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::\+S\+D\+Read\+Failed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classAlarmCentral_ada8da78dc55241536625a0585903906b}
+Make the code get locked and light up a L\+E\+D to indicate the user some problem with the S\+D Card reading \hypertarget{classAlarmCentral_a58fb4e4ff18e9ba38c604b30b21648ba}{\index{Alarm\+Central@{Alarm\+Central}!set\+Alarm\+Off@{set\+Alarm\+Off}}
+\index{set\+Alarm\+Off@{set\+Alarm\+Off}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{set\+Alarm\+Off}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::set\+Alarm\+Off (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classAlarmCentral_a58fb4e4ff18e9ba38c604b30b21648ba}
+Modifica o estado da central para Alarme Desligado, produz sons e muda o led aceso para interface H\+M \hypertarget{classAlarmCentral_a084c1a6f0fcf525f142db938beb66754}{\index{Alarm\+Central@{Alarm\+Central}!set\+Alarm\+On@{set\+Alarm\+On}}
+\index{set\+Alarm\+On@{set\+Alarm\+On}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{set\+Alarm\+On}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::set\+Alarm\+On (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classAlarmCentral_a084c1a6f0fcf525f142db938beb66754}
+Modifica o estado da central para Alarme Ligado, produz sons e muda o led aceso para interface H\+M \hypertarget{classAlarmCentral_a1c8793e3ca800e7f5446fb20b5eed3f2}{\index{Alarm\+Central@{Alarm\+Central}!set\+Led\+Pins@{set\+Led\+Pins}}
+\index{set\+Led\+Pins@{set\+Led\+Pins}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{set\+Led\+Pins}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::set\+Led\+Pins (
+\begin{DoxyParamCaption}
+\item[{int}]{green\+Led, }
+\item[{int}]{red\+Led}
+\end{DoxyParamCaption}
+)}}\label{classAlarmCentral_a1c8793e3ca800e7f5446fb20b5eed3f2}
+Define os dois pinos de saída para os leds de interface H\+M. 
+\begin{DoxyParams}{Parâmetros}
+{\em green\+Led,red\+Led} & Os pinos de saída do led verde e vermelho. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classAlarmCentral_ac6c9c892c47b5afd78d5f9d4e0f8b650}{\index{Alarm\+Central@{Alarm\+Central}!set\+New\+Control\+Adding\+State@{set\+New\+Control\+Adding\+State}}
+\index{set\+New\+Control\+Adding\+State@{set\+New\+Control\+Adding\+State}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{set\+New\+Control\+Adding\+State}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::set\+New\+Control\+Adding\+State (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classAlarmCentral_ac6c9c892c47b5afd78d5f9d4e0f8b650}
+Pisca os leds para indicar a transicao de estados \hypertarget{classAlarmCentral_a996dc61f1e4908f7c61d52fc20cd3126}{\index{Alarm\+Central@{Alarm\+Central}!set\+New\+Control\+Button\+Pin@{set\+New\+Control\+Button\+Pin}}
+\index{set\+New\+Control\+Button\+Pin@{set\+New\+Control\+Button\+Pin}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{set\+New\+Control\+Button\+Pin}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::set\+New\+Control\+Button\+Pin (
+\begin{DoxyParamCaption}
+\item[{int}]{new\+Control\+Button\+Pin}
+\end{DoxyParamCaption}
+)}}\label{classAlarmCentral_a996dc61f1e4908f7c61d52fc20cd3126}
+Define o botão de adicionar novos controles 
+\begin{DoxyParams}{Parâmetros}
+{\em new\+Control\+Button\+Pin} & O pino de entrada do botão de adicionar controles. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classAlarmCentral_a98cb7cc543581e2fad8257e3d200a7e4}{\index{Alarm\+Central@{Alarm\+Central}!set\+Siren\+Pin@{set\+Siren\+Pin}}
+\index{set\+Siren\+Pin@{set\+Siren\+Pin}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{set\+Siren\+Pin}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::set\+Siren\+Pin (
+\begin{DoxyParamCaption}
+\item[{int}]{siren\+Pin}
+\end{DoxyParamCaption}
+)}}\label{classAlarmCentral_a98cb7cc543581e2fad8257e3d200a7e4}
+Define o da sirene. 
+\begin{DoxyParams}{Parâmetros}
+{\em siren\+Pin} & O pino de saída aonde será ligada a sirene \\
+\hline
+\end{DoxyParams}
+\hypertarget{classAlarmCentral_a9ad83822d0cab018346818d506c82e01}{\index{Alarm\+Central@{Alarm\+Central}!siren\+Beep@{siren\+Beep}}
+\index{siren\+Beep@{siren\+Beep}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{siren\+Beep}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::siren\+Beep (
+\begin{DoxyParamCaption}
+\item[{int}]{times}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classAlarmCentral_a9ad83822d0cab018346818d506c82e01}
+Para a sirene usada na prototipagem, cada \char`\"{}\+Beep\char`\"{} ocorria em um periodo de 300\+Ms, assim, foi extraida uma função que faz a sirene tocar X Beeps 
+\begin{DoxyParams}{Parâmetros}
+{\em times} & O número de vezes que a sirene irá \char`\"{}\+Beepar\char`\"{} \\
+\hline
+\end{DoxyParams}
+\hypertarget{classAlarmCentral_ac6f4bc6e3bf8a1625a988fac07da56fc}{\index{Alarm\+Central@{Alarm\+Central}!start\+Alarm@{start\+Alarm}}
+\index{start\+Alarm@{start\+Alarm}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{start\+Alarm}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::start\+Alarm (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classAlarmCentral_ac6f4bc6e3bf8a1625a988fac07da56fc}
+Modifica o estado da central para alarme disparado \hypertarget{classAlarmCentral_a0f7836737d8de5b39dc33d257f2bb88f}{\index{Alarm\+Central@{Alarm\+Central}!treat\+Received\+Signal@{treat\+Received\+Signal}}
+\index{treat\+Received\+Signal@{treat\+Received\+Signal}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{treat\+Received\+Signal}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::treat\+Received\+Signal (
+\begin{DoxyParamCaption}
+\item[{int}]{received\+Signal}
+\end{DoxyParamCaption}
+)}}\label{classAlarmCentral_a0f7836737d8de5b39dc33d257f2bb88f}
+Como a central funciona como uma máquina de estados, cada ação sera tomada de acordo com o estado atual e o sinal recebido.  received\+Signal Um sinal dentro do Enum definido no arquivo.\+h \hypertarget{classAlarmCentral_ae3ce5787006fdf74904f4d13d4fd9ef1}{\index{Alarm\+Central@{Alarm\+Central}!turn\+Off@{turn\+Off}}
+\index{turn\+Off@{turn\+Off}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{turn\+Off}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::turn\+Off (
+\begin{DoxyParamCaption}
+\item[{int}]{pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classAlarmCentral_ae3ce5787006fdf74904f4d13d4fd9ef1}
+Coloca um pino em nível lógico baixo 
+\begin{DoxyParams}{Parâmetros}
+{\em pin} & O número do pino escolhido \\
+\hline
+\end{DoxyParams}
+\hypertarget{classAlarmCentral_ad40865ee4dbd43582ab96290ba3ffedf}{\index{Alarm\+Central@{Alarm\+Central}!turn\+On@{turn\+On}}
+\index{turn\+On@{turn\+On}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{turn\+On}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::turn\+On (
+\begin{DoxyParamCaption}
+\item[{int}]{pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classAlarmCentral_ad40865ee4dbd43582ab96290ba3ffedf}
+Coloca um pino em nível lógico alto 
+\begin{DoxyParams}{Parâmetros}
+{\em pin} & O pino de saída escolhido \\
+\hline
+\end{DoxyParams}
+\hypertarget{classAlarmCentral_a1f48ab01d759a081252ee956e70f0806}{\index{Alarm\+Central@{Alarm\+Central}!verify\+Pin@{verify\+Pin}}
+\index{verify\+Pin@{verify\+Pin}!Alarm\+Central@{Alarm\+Central}}
+\subsubsection[{verify\+Pin}]{\setlength{\rightskip}{0pt plus 5cm}void Alarm\+Central\+::verify\+Pin (
+\begin{DoxyParamCaption}
+\item[{int}]{pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classAlarmCentral_a1f48ab01d759a081252ee956e70f0806}
+Verifica se o Pino escolhido não é nenhum pino do protocolo M\+I\+S\+O ou o cartão S\+D 
+\begin{DoxyParams}{Parâmetros}
+{\em pin} & O pino que seŕa testado \\
+\hline
+\end{DoxyParams}
+Faz um loop infino com o L\+E\+D do pino 13 piscando para indicar que algum pino está errado.
+
+A documentação para esta classe foi gerada a partir dos seguintes arquivos\+:\begin{DoxyCompactItemize}
+\item 
+Alarm\+Central.\+h\item 
+Alarm\+Central.\+cpp\end{DoxyCompactItemize}
