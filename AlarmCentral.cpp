@@ -153,7 +153,6 @@ void AlarmCentral::treatReceivedSignal(int receivedSignal) {
               }
            ledBlink(_redLed, 200);
       break;
-      //Reset your arduino after adding a new control.
       case NEW_CONTROL_ADDING:
         addNewControl(receivedSignal);
         break;
