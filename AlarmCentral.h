@@ -64,10 +64,6 @@
 			  };
 			//Define the file containing all control codes
 			File _myFile;
-			/**
-				Here you put the quantity of controls that you want in you want
-				@TODO - A way to the user input the arraySize right on Arduino code
-			*/
 			long int _controls[];
 			void ledBlink(int _led, int s_peed_milis);
 			void turnOn(int _pin);
