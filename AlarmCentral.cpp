@@ -11,7 +11,8 @@
 
 /**
 *	Class Consctructor
-*	Receive the RCSwitch Object as a Parameter	
+*	This constructor receive the RCSwitch Object as a Parameter	
+* @param mySwtich The RCSwitch object that I'll be used for RF433Mhz decoding.
 */
 AlarmCentral::AlarmCentral(RCSwitch mySwitch) {
 	_mySwitch = mySwitch;
@@ -26,6 +27,7 @@ AlarmCentral::AlarmCentral(RCSwitch mySwitch) {
 	you might put all the sensors in a serie and use it in only
 	one Arduino PIN. But if you want a better feedback from the central
 	you can set one pin for each sensor.
+  @param sensor The Input Pin that I'll be used as a PIR sensor
 */
 void AlarmCentral::addPIRSensor(int sensor) {
       _PIRSensors[_PIRqty - 1] = sensor;
@@ -33,7 +35,9 @@ void AlarmCentral::addPIRSensor(int sensor) {
 }
 
 /**
-	Set the 2 pins for the Output leds;
+	Set the 2 pins for the Output leds, you might add more
+  leds as you want.
+  @param greenLed,redLed The output pins for each leds
 */
 void AlarmCentral::setLedPins(int greenLed, int redLed) {
 	_greenLed = greenLed;
@@ -42,12 +46,14 @@ void AlarmCentral::setLedPins(int greenLed, int redLed) {
 
 /**
 	Set the Siren Pin output
+  @param sirenPin The output Pin for the Siren
 */
 void AlarmCentral::setSirenPin(int sirenPin) {
 	_sirenPin = sirenPin;
 }
 /**
-	Define the new_controll Button input pin
+	Define the new control Button input pin
+  @param newControlButtonPin The Input pin for the button
 */
 void AlarmCentral::setNewControlButtonPin(int newControlButtonPin) {
 	_newControlButton = newControlButtonPin;
@@ -68,7 +74,7 @@ void AlarmCentral::begin() {
   verifyPin(_redLed);
 	pinMode(_sirenPin, OUTPUT);
   verifyPin(_sirenPin);
-	pinMode(_newControlButton, INPUT_PULLUP); //Using the arduino internal pullUp, use a own 10K resistor if you had some trouble
+	pinMode(_newControlButton, INPUT_PULLUP); //Using the arduino internal pullUp, use a own 10K resistor if you got some trouble
 	verifyPin(_newControlButton);
    if (!SD.begin(SD_PIN)) {
       SDReadFailed();
@@ -79,7 +85,7 @@ void AlarmCentral::begin() {
 	_state = ALARM_OFF;
 }
 /**
-	Searche for any king of signal and return it,
+	Search for any king of signal and return it,
 	if no one signal defineted on _receivedSignals var
 	it retunrs a UNDEFINED
 */
@@ -116,6 +122,7 @@ int AlarmCentral::getReceivedSignal() {
 	The alarm works as a state machine, it 
 	do it's actions according with the received
 	signal and it current state
+  @Param receivedSignal A Enum defineted in AlarmCentral.h file
 */
 void AlarmCentral::treatReceivedSignal(int receivedSignal) {
   switch (_state) {
@@ -157,14 +164,18 @@ void AlarmCentral::treatReceivedSignal(int receivedSignal) {
 */
 
 /**
-	Make a led blink after a Ms definited time
+	Make a led blink after a Ms definited time, if
+  the timer Overflwos and become to 0 again, the led
+  will blink and the count will begin again 
+  @param led The LedPin
+  @param speed_milis The Speed in miliseconds for each blink
 */
 void AlarmCentral::ledBlink(int led, int speed_milis) {
 
    int state = digitalRead(led);
    const long interval = speed_milis; 
    _currentMillis = millis();
-    if (_currentMillis - _previousMillis >= interval) {
+    if (_currentMillis - _previousMillis >= interval || _currentMillis - _previousMillis < 0) {
       _previousMillis = _currentMillis;
       //Invert the LED state, it always will make a blink
       digitalWrite(led, !state);
@@ -172,12 +183,14 @@ void AlarmCentral::ledBlink(int led, int speed_milis) {
 }
 /**
 	Put a pin on HIGH logic state
+  @param pin The output pin number
 */
 void AlarmCentral::turnOn(int pin) {
 	digitalWrite(pin, HIGH);
 }
 /**
 	Put a pin on LOW logic state
+  @param pin The output pin number
 */
 void AlarmCentral::turnOff(int pin) {
 	digitalWrite(pin, LOW);
@@ -185,7 +198,8 @@ void AlarmCentral::turnOff(int pin) {
 /**
 	For the Siren used in Production, a 300ms delay
 	is the time for a exactly one Beep, and the delay is used to
-	lock up the processor and avoid any accidental UI
+	lock up the processor and avoid any accidental user interaction
+  @param times The number of times that siren will beep
 */
 void AlarmCentral::sirenBeep(int times) {
 	turnOn(_sirenPin);
@@ -243,6 +257,11 @@ void AlarmCentral::loadData() {
   }
 }
 
+/**
+  Verify if the selected pin is not a miso pin, 
+  if it will, the software will be blocked here.
+  @param pin The pin that will be tested
+*/
 void AlarmCentral::verifyPin(int pin) {
   //Validate if the defined pins aren't any pin of the SPI protocol
     if ( pin == SD_PIN ||
@@ -311,6 +330,7 @@ void AlarmCentral::startAlarm() {
 /**
 	Insert a new control into the codes.txt file
 	and reload all the data into the arduino RAM
+  @param receivedSignal The signal that the central received, for change the alarm state if the button is pressed again
 */
 void AlarmCentral::addNewControl(int _receivedSignal) {
   boolean flag = 0; //Set a flag that I'll be used to detect a user interation
